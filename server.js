@@ -40,11 +40,11 @@ app.get("/jobs", async ( req, res) => {
 })
 
 //find job perticular city and skill
-app.get("/jobs/Barajalan&RecruitingManager", async ( req, res) => {
-    const job1 = await Job.find({city:"Barajalan"})
+app.get("/jobs/findJobByCity:Brightdog", async ( req, res) => {
+    // const job1 = await Job.find({city:"Barajalan"})
 
-    const job2 = await Job.find({$skill:"Recruiting Manager"})
-    return res.status(200).send({job1,job2})
+    const job2 = await Job.find({city:"Voskresensk"})
+    return res.status(200).send({job2})
 })
 
 //sorting job by rating
