@@ -22,6 +22,16 @@ const jobSchema = new mongoose.Schema({
 //step2: create model for schema
 const Job = mongoose.model("job", jobSchema)
 
+//step1:creating company schema
+const companySchema = new mongoose.Schema({
+    company_name:{type:String, required:true},
+    jobs:{type:String, required:true},
+    city:{type:String, required:true},
+    sector:{type:String, required:true}
+})
+//ste2:model for schema
+const Company = mongoose.model("company", companySchema)
+
 //api for find all job
 app.get("/jobs", async ( req, res) => {
     const jobs = await Job.find()
@@ -44,8 +54,13 @@ app.get("/jobs/sortJob", async ( req, res) => {
     return res.status(200).send({jobs})
 })
 
-//
 
+//get company details
+app.get("/companies", async ( req, res) => {
+    const company = await Company.find()
+
+    return res.status(200).send({company})
+})
 
 
 
