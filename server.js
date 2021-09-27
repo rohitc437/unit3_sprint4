@@ -55,6 +55,7 @@ app.get("/jobs/sortJob", async ( req, res) => {
 })
 
 
+
 //get company details
 app.get("/companies", async ( req, res) => {
     const company = await Company.find()
@@ -64,7 +65,17 @@ app.get("/companies", async ( req, res) => {
 
 
 
+app.get("/companies/Kimia", async ( req, res) => {
+    const company = await Company.find({company_name:"Kimia"})
 
+    return res.status(200).send({company})
+})
+
+app.get("/companies/highOpen", async ( req, res) => {
+    const company = await Company.find().sort({jobs:-1})
+
+    return res.status(200).send({company})
+})
 
 
 
